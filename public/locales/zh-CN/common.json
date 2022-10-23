@@ -11,7 +11,7 @@
     },
     "objective": {
       "title": "目标",
-      "answer": "只是以另一种方式来介绍自己和自学。"
+      "answer": "以另一种方式来介绍自己和自学。"
     }
   },
   "experiences": {
@@ -25,6 +25,10 @@
     "blockquote": "我是一名开发人员，我创造的是漏洞而不是引用句。",
     "hoo_jian_liang": "何建谅",
     "web_developer": "网页开发人员"
+  },
+  "head": {
+    "title": "何建谅 - 建谅的自我介绍",
+    "description": "以另一种方式来介绍自己"
   },
   "projects": {
     "associated_with": "同{{associated}}联合"
