@@ -7,18 +7,83 @@ import { useRouter } from "next/router";
 import { useTheme } from "next-themes";
 import { useScroll, motion, useTransform } from "framer-motion";
 
-const navigation = [
-  { name: "Home", href: "/" },
-  { name: "Projects", href: "/projects" },
-  { name: "About", href: "/about" },
-];
+interface navigationProp {
+  name: {
+    [key: string]: string;
+  };
+  href: string;
+}
 
-const Navbar = () => {
+interface LocaleProp {
+  locale: string;
+  description: {
+    [key: string]: string;
+  };
+}
+
+interface LocaleLabelProp {
+  [key: string]: string;
+}
+
+export default function Navbar() {
   const router = useRouter();
   const { scrollY } = useScroll();
   const y = useTransform(scrollY, [0, 212], [12, 0]);
   const opacity = useTransform(scrollY, [0, 212], [0, 1]);
   const { theme, setTheme } = useTheme();
+
+  const handleLocaleChange = (locale: string) => {
+    if (router.locale !== locale)
+      router.push(router.route, router.asPath, {
+        locale: locale,
+      });
+  };
+
+  const navigation: navigationProp[] = [
+    {
+      name: {
+        en: "Home",
+        "zh-CN": "主页",
+      },
+      href: "/",
+    },
+    {
+      name: {
+        en: "Projects",
+        "zh-CN": "项目",
+      },
+      href: "/projects",
+    },
+    {
+      name: {
+        en: "About",
+        "zh-CN": "关于",
+      },
+      href: "/about",
+    },
+  ];
+
+  const locales: LocaleProp[] = [
+    {
+      locale: "en",
+      description: {
+        en: "English",
+        "zh-CN": "英语",
+      },
+    },
+    {
+      locale: "zh-CN",
+      description: {
+        en: "Simplified Chinese",
+        "zh-CN": "简体中文",
+      },
+    },
+  ];
+
+  const localeLabel: LocaleLabelProp = {
+    en: "EN",
+    "zh-CN": "CN",
+  };
 
   return (
     <Disclosure
@@ -85,8 +150,7 @@ const Navbar = () => {
                           px-3 py-2 rounded-md text-sm font-medium
                         `}
                         >
-                          {" "}
-                          {item.name}{" "}
+                          {item.name[router.locale || "en"]}
                         </a>
                       </Link>
                     ))}
@@ -113,7 +177,7 @@ const Navbar = () => {
                           d="M10.5 21l5.25-11.25L21 21m-9-3h7.5M3 5.621a48.474 48.474 0 016-.371m0 0c1.12 0 2.233.038 3.334.114M9 5.25V3m3.334 2.364C11.176 10.658 7.69 15.08 3 17.502m9.334-12.138c.896.061 1.785.147 2.666.257m-4.589 8.495a18.023 18.023 0 01-3.827-5.802"
                         />
                       </svg>
-                      EN
+                      {localeLabel[router.locale || "en"]}
                     </Menu.Button>
                   </div>
                   <Transition
@@ -126,24 +190,20 @@ const Navbar = () => {
                     leaveTo="transform opacity-0 scale-95"
                   >
                     <Menu.Items className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md py-1 px-2 shadow-lg ring-1 ring-accent dark:ring-dark-accent ring-opacity-5 focus:outline-none bg-primary dark:bg-dark-primary divide-y divide-accent/50 dark:divide-dark-accent/50">
-                      <Menu.Item>
-                        <span
-                          className={`
-                            block px-4 py-2 text-sm text-accent dark:text-dark-accent
-                          `}
+                      {locales.map((locale) => (
+                        <Menu.Item
+                          key={locale.locale}
+                          as="span"
+                          className={`${
+                            router.locale === locale.locale
+                              ? "font-bold"
+                              : "hover:font-bold"
+                          } block cursor-pointer px-4 py-2 text-sm text-accent/75 dark:text-dark-accent/75`}
+                          onClick={() => handleLocaleChange(locale.locale)}
                         >
-                          English
-                        </span>
-                      </Menu.Item>
-                      <Menu.Item>
-                        <span
-                          className={`
-                            block px-4 py-2 text-sm text-accent dark:text-dark-accent
-                          `}
-                        >
-                          Chinese
-                        </span>
-                      </Menu.Item>
+                          {locale.description[router.locale || "en"]}
+                        </Menu.Item>
+                      ))}
                     </Menu.Items>
                   </Transition>
                 </Menu>
@@ -204,17 +264,13 @@ const Navbar = () => {
                     aria-current={
                       router.pathname === item.href ? "page" : undefined
                     }
-                    className={`
-                    ${
+                    className={`${
                       router.pathname === item.href
                         ? "bg-secondary dark:bg-dark-secondary"
-                        : "text-accent/75 dark:text-dark-accent/75 hover:bg-secondary/75 dark:hover:bg-dark-secondary/75"
-                    } 
-                    block px-3 py-2 rounded-md text-base font-medium
-                  `}
+                        : "hover:bg-secondary/75 dark:hover:bg-dark-secondary/75"
+                    } block px-3 py-2 rounded-md text-base font-medium text-accent/75 dark:text-dark-accent/75`}
                   >
-                    {" "}
-                    {item.name}{" "}
+                    {item.name[router.locale || "en"]}
                   </a>
                 </Link>
               ))}
@@ -224,6 +280,4 @@ const Navbar = () => {
       )}
     </Disclosure>
   );
-};
-
-export default Navbar;
+}
