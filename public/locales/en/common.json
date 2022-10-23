@@ -26,6 +26,10 @@
     "hoo_jian_liang": "Hoo Jian Liang",
     "web_developer": "Web developer"
   },
+  "head": {
+    "title": "Hoo Jian Liang - JL's Introduction",
+    "description": "Just another way to introduce myself"
+  },
   "projects": {
     "associated_with": "Associated with {{associated}}"
   },
