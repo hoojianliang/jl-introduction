@@ -1,0 +1,44 @@
+{
+  "about": {
+    "how_it_built": {
+      "title": "How it built",
+      "answer": "TypeScript, Next.js, Tailwind CSS, Framer Motion, Headless UI"
+    },
+    "introduction": {
+      "title": "Introduction",
+      "answer": "This is a Next.js project bootstrapped with create-next-app.",
+      "visit_my_blog": "Please visit <2>https://jlprofile.home.blog/</2> with more visualisation details for the projects that I have done."
+    },
+    "objective": {
+      "title": "Objective",
+      "answer": "Just another way to introduce myself and self-learning."
+    }
+  },
+  "experiences": {
+    "title": "My working experiences",
+    "summary": "In short I had a total of 7 years work experience in both the SME and MNC sector.",
+    "sme": "In SME, I handle multiple projects simultaneously which greatly expands my technical knowledge and improves my time management skills.",
+    "mnc": "In MNC, I code with best practice and given proper training.",
+    "conclusion": "I believe I can continuously improve in both hard skills or soft skills."
+  },
+  "figure": {
+    "blockquote": "I am a developer, I create bug not quote.",
+    "hoo_jian_liang": "Hoo Jian Liang",
+    "web_developer": "Web developer"
+  },
+  "projects": {
+    "associated_with": "Associated with {{associated}}"
+  },
+  "self_introduction": {
+    "introverted_developer": "Introverted developer",
+    "deep_dive_to_study": "Please deep dive into webpage to study about me.",
+    "main": "My name is Hoo Jian Liang, a Software Developer with a total of 7 years work experience, previously worked as full stack developer and currently working as Frontend Web Developer in Razer Inc. under Razer Gold department.",
+    "why": "I choose to be a frontend developer because frontend is interesting, I loved and used to build responsive websites."
+  },
+  "skills": {
+    "title": "My skills",
+    "frontend": "Frontend",
+    "backend": "Backend",
+    "others": "Others"
+  }
+}

@@ -1,20 +1,39 @@
 import type { NextPage } from "next";
 import { motion, Variants } from "framer-motion";
 import Image from "next/image";
+import { useTranslation } from "next-i18next";
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import { useRouter } from "next/router";
+
+type ExperiencesProp = {
+  [key: string]: any;
+};
 
 const Home: NextPage = () => {
-  const experiences = [
+  const { t } = useTranslation("common");
+  const router = useRouter();
+
+  const experiences: ExperiencesProp = [
     {
       from: "2022",
       to: "present",
       src: "/images/razer.png",
       alt: "razer",
       company: "Razer Inc.",
-      position: "Web Developer",
-      descriptions: [
-        "Managed Razer Gold website based on client and merchant requirements in multiple regions and languages.",
-        "In charge of Razer gold webshop flow.",
-      ],
+      en: {
+        position: "Web Developer",
+        descriptions: [
+          "Managed Razer Gold website based on client and merchant requirements in multiple regions and languages.",
+          "In charge of Razer gold webshop flow.",
+        ],
+      },
+      "zh-CN": {
+        position: "网页开发人员",
+        descriptions: [
+          "以多个地区和语言根据客户和商户的要求管理 Razer Gold 网站。",
+          "主要负责 Razer Gold 网店流程。",
+        ],
+      },
     },
     {
       from: "2020",
@@ -22,12 +41,22 @@ const Home: NextPage = () => {
       src: "/images/rigel.jpg",
       alt: "rigel",
       company: "Rigel Technology (S) Pte Ltd",
-      position: "Web Application Developer",
-      descriptions: [
-        "Work in tandem with a team of mechanical, electronics and design engineers to create and integrate products with IoT.",
-        "Build and design in house web applications with a focus on user experience, security and scalability by using Laravel and VueJS.",
-        "Develop mobile apps by using React Native.​",
-      ],
+      en: {
+        position: "Web Application Developer",
+        descriptions: [
+          "Work in tandem with a team of mechanical, electronics and design engineers to create and integrate products with IoT.",
+          "Build and design in house web applications with a focus on user experience, security and scalability by using Laravel and VueJS.",
+          "Develop mobile apps by using React Native.​",
+        ],
+      },
+      "zh-CN": {
+        position: "网络应用程序开发人员",
+        descriptions: [
+          "与机械、电子和设计工程师团队合作，创建产品并将其与物联网集成。",
+          "使用 Laravel 和 VueJS 构建并专注于用户体验、安全性和可扩展性的内部网络应用程序。",
+          "使用 React Native 开发移动应用。​",
+        ],
+      },
     },
     {
       from: "2018",
@@ -35,12 +64,22 @@ const Home: NextPage = () => {
       src: "/images/aviationlearn.jpg",
       alt: "aviationlearn",
       company: "Aviationlearn Pte Ltd",
-      position: "Software Developer",
-      descriptions: [
-        "Develop a website by using WordPress CMS and Lumen API.",
-        "Work with Project Manager to attend tender meetings and timeline planning for web related projects.",
-        "Work with clients in Microsoft Azure Cloud Computing Services.",
-      ],
+      en: {
+        position: "Software Developer",
+        descriptions: [
+          "Develop a website by using WordPress CMS and Lumen API.",
+          "Work with Project Manager to attend tender meetings and timeline planning for web related projects.",
+          "Work with clients in Microsoft Azure Cloud Computing Services.",
+        ],
+      },
+      "zh-CN": {
+        position: "软件开发人员",
+        descriptions: [
+          "使用 WordPress CMS 和 Lumen API 开发网站。",
+          "与项目经理一起参加网络相关项目的招标会议和时间表规划。",
+          "与客户合作于 Microsoft Azure 云计算服务。",
+        ],
+      },
     },
     {
       from: "2017",
@@ -48,10 +87,18 @@ const Home: NextPage = () => {
       src: "/images/izeno.png",
       alt: "izeno",
       company: "iZeno Pte Ltd",
-      position: "Java Developer",
-      descriptions: [
-        "Work as vendor to enhance Java Web Application (Prudential eRecruitment System) by using Spring Framework and AngularJS.",
-      ],
+      en: {
+        position: "Java Developer",
+        descriptions: [
+          "Work as vendor to enhance Java Web Application (Prudential eRecruitment System) by using Spring Framework and AngularJS.",
+        ],
+      },
+      "zh-CN": {
+        position: "Java 开发人员",
+        descriptions: [
+          "作为供应商使用 Spring Framework 和 AngularJS 来增进 Java 网页应用程序（Prudential eRecruitment System）。",
+        ],
+      },
     },
     {
       from: "2015",
@@ -59,11 +106,20 @@ const Home: NextPage = () => {
       src: "/images/worldtop.jpg",
       alt: "worldtop",
       company: "WorldTop Empire Sdn. Bhd.",
-      position: "Back End Developer",
-      descriptions: [
-        "Developed multiple Java standalone monitoring systems.",
-        "Developed Forex Broker Service Application in PHP.",
-      ],
+      en: {
+        position: "Back End Developer",
+        descriptions: [
+          "Developed multiple Java standalone monitoring systems.",
+          "Developed Forex Broker Service Application in PHP.",
+        ],
+      },
+      "zh-CN": {
+        position: "后端开发人员",
+        descriptions: [
+          "开发了多个Java独立监控系统。",
+          "用 PHP 开发外汇经纪服务应用程序。",
+        ],
+      },
     },
   ];
 
@@ -105,15 +161,15 @@ const Home: NextPage = () => {
               initial={{ opacity: 0, scale: 1 }}
               className="text-lg font-medium text-accent/75 dark:text-dark-accent/75"
             >
-              "I am a developer, I create bug not quote."
+              {t("figure.blockquote")}
             </motion.p>
           </blockquote>
           <figcaption className="font-medium">
             <div className="text-accent dark:text-dark-accent">
-              Hoo Jian Liang
+              {t("figure.hoo_jian_liang")}
             </div>
-            <div className="text-xs text-accent/75 dark:text-dark-accent/75">
-              Web developer
+            <div className="text-xs capitalize text-accent/75 dark:text-dark-accent/75">
+              {t("figure.web_developer")}
             </div>
             <div className="flex md:justify-start justify-center items-center py-2 space-x-2 text-accent/75 dark:text-dark-accent/75">
               {/*<!-- Linkedin -->*/}
@@ -121,6 +177,7 @@ const Home: NextPage = () => {
                 href={`https://www.linkedin.com/in/hoo-jian-liang-2872a6134/`}
                 aria-label="Linkedin"
                 target="_blank"
+                rel="noreferrer"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -138,6 +195,7 @@ const Home: NextPage = () => {
                 href={`https://github.com/hoojianliang`}
                 aria-label="Github"
                 target="_blank"
+                rel="noreferrer"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -173,29 +231,23 @@ const Home: NextPage = () => {
       </figure>
       <div className="flex lg:flex-row flex-col m-4 p-4 gap-8">
         <div>
-          <h2>Introverted Developer</h2>
+          <h2 className="capitalize">
+            {t("self_introduction.introverted_developer")}
+          </h2>
           <div className="m-4 text-accent/75 dark:text-dark-accent/75">
-            <p>
-              My name is Hoo Jian Liang, a Software Developer with a total of 7
-              years work experience, previously worked as full stack developer
-              and currently working as Frontend Web Developer in Razer Inc.
-              under Razer Gold department.
-            </p>
-            <p>
-              I choose to be a frontend developer because frontend is
-              interesting, I loved and used to build responsive websites.
-            </p>
-            <p>Please deep dive into webpage to study about me.</p>
+            <p>{t("self_introduction.main")}</p>
+            <p>{t("self_introduction.why")}</p>
+            <p>{t("self_introduction.deep_dive_to_study")}</p>
           </div>
         </div>
       </div>
       <div className="m-4">
-        <h3>My Skills</h3>
+        <h3 className="capitalize">{t("skills.title")}</h3>
         <div className="font-mono grid grid-cols-1 md:grid-cols-3 sm:grid-cols-2 gap-4">
           <div className="p-4 rounded-xl bg-secondary/50 dark:bg-dark-secondary/50 shadow-md shadow-secondary dark:shadow-dark-secondary">
             <p>
-              <span className="px-2 py-1 text-xs font-bold rounded bg-dark-primary dark:bg-primary text-dark-accent dark:text-accent">
-                FRONTEND
+              <span className="px-2 py-1 text-xs uppercase font-bold rounded bg-dark-primary dark:bg-primary text-dark-accent dark:text-accent">
+                {t("skills.frontend")}
               </span>
             </p>
             <ul className="text-accent/75 dark:text-dark-accent/75">
@@ -229,8 +281,8 @@ const Home: NextPage = () => {
           </div>
           <div className="p-4 rounded-xl bg-secondary/50 dark:bg-dark-secondary/50 shadow-md shadow-secondary dark:shadow-dark-secondary">
             <p>
-              <span className="px-2 py-1 text-xs font-bold rounded bg-dark-primary dark:bg-primary text-dark-accent dark:text-accent">
-                BACKEND
+              <span className="px-2 py-1 text-xs uppercase font-bold rounded bg-dark-primary dark:bg-primary text-dark-accent dark:text-accent">
+                {t("skills.backend")}
               </span>
             </p>
             <ul className="text-accent/75 dark:text-dark-accent/75">
@@ -259,8 +311,8 @@ const Home: NextPage = () => {
           </div>
           <div className="p-4 rounded-xl bg-secondary/50 dark:bg-dark-secondary/50 shadow-md shadow-secondary dark:shadow-dark-secondary">
             <p>
-              <span className="px-2 py-1 text-xs font-bold rounded bg-dark-primary dark:bg-primary text-dark-accent dark:text-accent">
-                OTHERS
+              <span className="px-2 py-1 text-xs uppercase font-bold rounded bg-dark-primary dark:bg-primary text-dark-accent dark:text-accent">
+                {t("skills.others")}
               </span>
             </p>
             <ul className="text-accent/75 dark:text-dark-accent/75">
@@ -294,30 +346,18 @@ const Home: NextPage = () => {
         </div>
       </div>
       <div className="m-4">
-        <h3>My Working Experiences</h3>
+        <h3 className="capitalize">{t("experiences.title")}</h3>
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
           <div>
             <div className="rounded-xl p-6 text-accent/75 dark:text-dark-accent/75 border border-secondary dark:border-dark-secondary shadow-md shadow-secondary dark:shadow-dark-secondary">
-              <p>
-                In short I had a total of 7 years work experience in both the
-                SME and MNC sector.
-              </p>
-              <p>
-                In SME, I handle multiple projects simultaneously which greatly
-                expands my technical knowledge and improves my time management
-                skills.
-              </p>
-              <p>
-                In MNC, I code with best practice and given proper training.
-              </p>
-              <p>
-                I believe I will continuously improve in both hard skills or
-                soft skills.
-              </p>
+              <p>{t("experiences.summary")}</p>
+              <p>{t("experiences.sme")}</p>
+              <p>{t("experiences.mnc")}</p>
+              <p>{t("experiences.conclusion")}</p>
             </div>
           </div>
           <div className="rounded-xl lg:col-span-2 grid grid-cols-1 gap-4 divide-y divide-accent/20 dark:divide-dark-accent/20 border border-secondary/50 dark:border-dark-secondary/50 shadow-md shadow-secondary dark:shadow-dark-secondary">
-            {experiences.map((item) => (
+            {experiences.map((item: any) => (
               <div
                 key={item.alt}
                 className="flex p-4 gap-4 text-accent/75 dark:text-dark-accent/75"
@@ -351,11 +391,13 @@ const Home: NextPage = () => {
                 </div>
                 <div>
                   <p className="font-semibold">{item.company}</p>
-                  <p>{item.position}</p>
+                  <p>{item[router.locale || "en"].position}</p>
                   <ul className="list-disc">
-                    {item.descriptions.map((description, key) => (
-                      <li key={key}>{description}</li>
-                    ))}
+                    {item[router.locale || "en"].descriptions.map(
+                      (description: string, key: number) => (
+                        <li key={key}>{description}</li>
+                      )
+                    )}
                   </ul>
                 </div>
               </div>
@@ -368,3 +410,11 @@ const Home: NextPage = () => {
 };
 
 export default Home;
+
+export async function getStaticProps({ locale }: any) {
+  return {
+    props: {
+      ...(await serverSideTranslations(locale, ["common"])),
+    },
+  };
+}

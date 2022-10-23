@@ -1,0 +1,44 @@
+{
+  "about": {
+    "how_it_built": {
+      "title": "如何被建造",
+      "answer": "TypeScript, Next.js, Tailwind CSS, Framer Motion, Headless UI"
+    },
+    "introduction": {
+      "title": "介绍",
+      "answer": "这是一个使用 create-next-app 引导的 Next.js 项目。",
+      "visit_my_blog": "请拜访<2>https://jlprofile.home.blog/</2>以更多可视化细节来了解我所做的项目。"
+    },
+    "objective": {
+      "title": "目标",
+      "answer": "只是以另一种方式来介绍自己和自学。"
+    }
+  },
+  "experiences": {
+    "title": "我的工作经验",
+    "summary": "简而言之，我在中小企业和跨国公司领域共有 7 年的工作经验。",
+    "sme": "当我在中小企业的时候，我同时处理多个项目，这极大地扩展了我的技术知识并提高了我的时间管理技能。",
+    "mnc": "当我在跨国公司领域的时候, 我使用最佳实践进行编码并接受专业的培训。",
+    "conclusion": "我相信我能持续提高我的硬技和软技。"
+  },
+  "figure": {
+    "blockquote": "我是一名开发人员，我创造的是漏洞而不是引用句。",
+    "hoo_jian_liang": "何建谅",
+    "web_developer": "网页开发人员"
+  },
+  "projects": {
+    "associated_with": "同{{associated}}联合"
+  },
+  "self_introduction": {
+    "introverted_developer": "内向的开发者",
+    "deep_dive_to_study": "请深入我的网页了解更多我。",
+    "main": "我叫何建谅，是一名软件开发人员，总共有 7 年的工作经验，曾担任全栈开发人员，目前在 Razer Inc. 的 Razer Gold 部门担任前端网页开发人员。",
+    "why": "我选择成为前端开发人员，因为前端很有趣，而且我喜欢并习惯于构建响应式网站。"
+  },
+  "skills": {
+    "title": "我的技能",
+    "frontend": "前端",
+    "backend": "后端",
+    "others": "后端"
+  }
+}
