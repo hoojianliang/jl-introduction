@@ -3,6 +3,7 @@ import Footer from "./footer";
 import Head from "next/head";
 import { useTranslation } from "next-i18next";
 import Script from "next/script";
+import { useRouter } from "next/router";
 
 type ComponentProps = {
   children: React.ReactNode;
@@ -10,6 +11,8 @@ type ComponentProps = {
 
 export default function Layout({ children }: ComponentProps) {
   const { t } = useTranslation("common");
+  const router = useRouter();
+  const page = router.pathname.substring(1);
 
   return (
     <div className="flex flex-col min-h-screen">
@@ -29,7 +32,9 @@ export default function Layout({ children }: ComponentProps) {
         `}
       </Script>
       <Head>
-        <title>{t("head.title")}</title>
+        <title>
+          {t("head.title", { page: t([`title.${page ? page : 'home'}`]) })}
+        </title>
         <link rel="icon" href="/images/profile.jpg" />
         <meta name="description" content={t("head.description")} />
         <meta property="og:image" content={`/images/profile.jpg`} />

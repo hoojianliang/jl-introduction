@@ -27,7 +27,7 @@
     "web_developer": "网页开发人员"
   },
   "head": {
-    "title": "何建谅 - 建谅的自我介绍",
+    "title": "建谅的自我介绍 - {{page}}",
     "description": "以另一种方式来介绍自己"
   },
   "projects": {
@@ -44,5 +44,10 @@
     "frontend": "前端",
     "backend": "后端",
     "others": "后端"
+  },
+  "title": {
+    "home": "主页",
+    "projects": "项目",
+    "about": "关于"
   }
 }
